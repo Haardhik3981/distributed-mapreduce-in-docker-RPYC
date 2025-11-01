@@ -45,21 +45,7 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 ---
 
 ## Repository Layout
-.
-├── README.md
-├── docker-compose.yml
-├── coordinator/
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── coordinator.py
-├── worker/
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── worker.py
-└── data/
-    ├── txt/        # downloaded & transcoded UTF-8 dataset
-    ├── chunks/     # chunk-*.txt created by coordinator
-    └── out/        # reduce-<part>.json written by workers
+<img width="451" height="280" alt="Screenshot 2025-10-31 at 9 19 42 PM" src="https://github.com/user-attachments/assets/e8ee8cc4-1c6d-4aff-8867-502d13a031ce" />
 
 ## Prerequisites
 
