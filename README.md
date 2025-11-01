@@ -1,15 +1,14 @@
 # Dockerized MapReduce Word Count using RPyC
 
-## What this does
+# RPyC MapReduce in Docker
+
+A minimal MapReduce system with one **Coordinator** and N **Workers**, communicating over **RPyC** inside Docker containers. The system downloads a UTF-8 dataset (ZIP or plain text), **chunks it on disk**, runs **map** and **reduce** tasks across workers with **timeout + reassignment**, aggregates results, prints a **Top-20** word frequency table, and exits. Worker reduce outputs are also persisted as JSON files on the host.
+
 - Runs **1 Coordinator** container and **3+ Worker** containers.
 - Coordinator downloads a dataset (UTF-8 txt or zip with txt files), splits into chunks,
   sends **map** tasks to workers via **RPyC**, shuffles, then sends **reduce** tasks.
 - Detects **worker failure / timeout (20s)** and **reassigns** tasks.
 - **Configurable** reducers and workers.
-
-# RPyC MapReduce in Docker
-
-A minimal MapReduce system with one **Coordinator** and N **Workers**, communicating over **RPyC** inside Docker containers. The system downloads a UTF-8 dataset (ZIP or plain text), **chunks it on disk**, runs **map** and **reduce** tasks across workers with **timeout + reassignment**, aggregates results, prints a **Top-20** word frequency table, and exits. Worker reduce outputs are also persisted as JSON files on the host.
 
 ---
 
@@ -69,7 +68,7 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 - Docker Desktop (or Docker Engine)  
 - Docker Compose v2+
 
-## CONFIGURATION
+## Configuration
 | Env Variable        | Description                                                                                  |
 |---------------------|----------------------------------------------------------------------------------------------|
 | `USE_WORKERS`       | Number of worker replicas to run and the scheduling pool size used by the coordinator.       |
@@ -83,17 +82,18 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 
 
 ## BUILD & RUN
-# 1 worker
+### 1 worker
 - USE_WORKERS=1 docker compose up --build --scale worker=1 --abort-on-container-exit
 
-# 5 workers
+### 5 workers
 - USE_WORKERS=5 docker compose up --build --scale worker=5 --abort-on-container-exit
 
-# 10 workers
+### 10 workers
 - USE_WORKERS=10 docker compose up --build --scale worker=10 --abort-on-container-exit
 
 ## QUICK RESET
 
-# Stop containers and remove Compose network:
+### Stop containers and remove Compose network:
 - docker compose down
+### Remove Data
 - rm -rf ./data/chunks ./data/out ./data/txt
