@@ -1,0 +1,24 @@
+services:
+  worker:
+    build: ./worker
+    environment:
+      RPYC_PORT: 18861
+    expose:
+      - "18861"
+    volumes:
+      - ./data:/data
+
+  coordinator:
+    build: ./coordinator
+    depends_on:
+      - worker
+    environment:
+      WORKER_HOSTS: "worker"
+      MAP_PARALLELISM: "${USE_WORKERS}"
+      USE_WORKERS: "${USE_WORKERS}"
+      RPYC_PORT: 18861
+      TASK_TIMEOUT_SECS: 20
+      DATA_DIR: /data/txt
+      CHUNK_DIR: /data/chunks
+    volumes:
+      - ./data:/data
