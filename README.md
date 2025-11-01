@@ -76,7 +76,7 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 | `NUM_REDUCERS`      | Number of reduce partitions; controls shuffle fan-out and reduce concurrency.                |
 | `WORKER_HOSTS`      | Hostname used by the coordinator to reach workers (e.g., `worker` for Docker DNS round-robin). |
 | `RPYC_PORT`         | TCP port workers listen on for RPyC requests from the coordinator.                           |
-| `TASK_TIMEOUT_SECS` | Per-task timeout; timed-out map/reduce tasks are reassigned to another worker.               |
+| `TASK_TIMEOUT_SECS` | Per-task timeout. Timed-out map/reduce tasks are reassigned to another worker.               |
 | `DATA_DIR`          | Directory for downloaded/transcoded UTF-8 dataset files inside the container (`./data/txt` on host). |
 | `CHUNK_DIR`         | Directory where on-disk chunk files are written/read (`./data/chunks` on host).              |
 
