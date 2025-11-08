@@ -65,7 +65,7 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 | `CHUNK_DIR`         | Directory where on-disk chunk files are written/read (`./data/chunks` on host).              |
 
 
-## BUILD & RUN
+## Build & Run
 ### 1 worker
 - USE_WORKERS=1 docker compose up --build --scale worker=1 --abort-on-container-exit
 
@@ -75,7 +75,7 @@ A minimal MapReduce system with one **Coordinator** and N **Workers**, communica
 ### 10 workers
 - USE_WORKERS=10 docker compose up --build --scale worker=10 --abort-on-container-exit
 
-## QUICK RESET
+## Quick Reset
 
 ### Stop containers and remove Compose network:
 - docker compose down
